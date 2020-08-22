@@ -55,6 +55,16 @@ public class UserController {
 
     }
 
+    /**
+     *  
+     *
+     * @author liang_jun
+     * @param id : 
+     * @param name :  
+     * @return 
+     * @throws 
+     * @date 2020/8/22 11:34
+     */	
     @GetMapping("/modifyUserById")
     public Result<Object> modifyUserById(Long id, String name) {
         if (null == id || StringUtils.isBlank(name)) {
