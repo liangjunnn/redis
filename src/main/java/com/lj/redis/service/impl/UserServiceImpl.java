@@ -1,6 +1,7 @@
 package com.lj.redis.service.impl;
 
 import com.alibaba.fastjson.JSON;
+import com.lj.redis.common.constant.RedisKeyConstant;
 import com.lj.redis.common.enums.ErrorMsgEnum;
 import com.lj.redis.common.util.RedisUtil;
 import com.lj.redis.exception.UserException;
@@ -36,7 +37,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public Object getUserById(Long id) {
         //访问用户先从redis读取是否有数据,没有从db拿,再放入redis;
-        Object userObj = redisUtil.get(String.valueOf(id));
+        String key = RedisKeyConstant.REDIS_USER_ID + String.valueOf(id);
+        Object userObj = redisUtil.get(key);
         UserVO user = null;
         if (null == userObj) {
             //如果db没有数据，直接返回异常;
@@ -45,7 +47,7 @@ public class UserServiceImpl implements UserService {
                 throw new UserException(ErrorMsgEnum.USER_THERE_IS_NO);
             }
             //db数据存在 写入redis
-            redisUtil.set(String.valueOf(id), user);
+            redisUtil.set(key, user);
             log.info("根据用户唯一编号获取用户信息db返回 user:{}", JSON.toJSONString(user));
             return user;
         }

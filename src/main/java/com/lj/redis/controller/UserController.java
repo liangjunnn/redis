@@ -61,7 +61,6 @@ public class UserController {
         }
         Object user = userService.getUserById(id);
         return new Result<Object>(user);
-
     }
 
     /**
@@ -140,8 +139,8 @@ public class UserController {
         phones.add("1111");
         phones.add("2222");
         phones.add("3333");
-        redisUtil.lSet(RedisKeyConstant.USER_USERNAME_VALUE, names);
-        redisUtil.lSet(RedisKeyConstant.USER_USERPHONE_VALUE, phones);
+        redisUtil.lSet(RedisKeyConstant.REDIS_USER_NAME, names);
+        redisUtil.lSet(RedisKeyConstant.USER_USER_PHONE, phones);
         return new Result<>();
     }
 
