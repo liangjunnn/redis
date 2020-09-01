@@ -31,7 +31,22 @@ public enum ErrorMsgEnum {
     /**
      *用户更新失败
      */
-    USER_UPDATE_ERROR("100003","用户更新失败")
+    USER_UPDATE_ERROR("100003","用户更新失败"),
+
+    /**
+     * 文件上传失败
+     */
+    FILE_UPLOAD_ERROR("100004","文件上传失败"),
+
+    /**
+     * 文件不存在
+     */
+    FILE_THERE_IS_NO("100005","文件不存在"),
+
+    /**
+     * 文件下载失败
+     */
+    FILE_DOWNLOAD_ERROR("100006","文件下载失败")
 
     ;
     /**
