@@ -141,7 +141,7 @@ public class UserController {
         phones.add("3333");
         redisUtil.lSet(RedisKeyConstant.REDIS_USER_NAME, names);
         redisUtil.lSet(RedisKeyConstant.USER_USER_PHONE, phones);
-        return new Result<>();
+        return new Result<Object>();
     }
 
     /**
